@@ -316,6 +316,18 @@ void Visitor::ProcessUpperLevelTask(const ExprWithCleanups* task,
                 .Width},
            {"type", GetMmapElemType(param) + "*"}});
     };
+    // TODO: extend to support streams as well
+    auto add_stream_meta = [&](const string& name) {
+      metadata["ports"].push_back({
+        {"name", name},
+        {"cat", IsTapaType(param, "istream") ? "istream" : "ostream"},
+        {"width", 
+          context_
+              .getTypeInfo(GetTemplateArg(param->getType(), 0)->getAsType())
+              .Width},
+        {"type", GetStreamElemType(param)}   
+      });
+    };
     if (IsTapaType(param, "(async_)?mmap")) {
       add_mmap_meta(param_name);
     } else if (IsTapaType(param, "(async_)?mmaps")) {
@@ -323,7 +335,7 @@ void Visitor::ProcessUpperLevelTask(const ExprWithCleanups* task,
         add_mmap_meta(param_name + "[" + to_string(i) + "]");
       }
     } else if (IsStreamInterface(param)) {
-      // TODO
+      add_stream_meta(param_name);
     } else {
       metadata["ports"].push_back(
           {{"name", param_name},
@@ -369,8 +381,7 @@ void Visitor::ProcessUpperLevelTask(const ExprWithCleanups* task,
     uint64_t vec_length = 1;
     if (const auto method = dyn_cast<CXXMethodDecl>(invoke->getCalleeDecl())) {
       auto args = method->getTemplateSpecializationArgs()->asArray();
-      step =
-          *reinterpret_cast<const int*>(args[0].getAsIntegral().getRawData());
+      step = *reinterpret_cast<const int*>(args[0].getAsIntegral().getRawData());
       if (args.size() > 1 && args[1].getKind() == TemplateArgument::Integral) {
         is_vec = true;
         vec_length = *args[1].getAsIntegral().getRawData();
