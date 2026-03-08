@@ -5,7 +5,8 @@ Getting Started
 
    This part guides you through the basic usage of RapidStream for optimizing
    TAPA FPGA dataflow accelerators. It assumes you have :ref:`installed TAPA
-   and RapidStream <user/installation:One-Step Installation>` and have
+   <user/installation:Local Build Installation>` and are working in an
+   environment where RapidStream is already provisioned and have
    generated a TAPA design into an XO file. If you haven't, please refer to
    the :ref:`Getting Started <user/getting_started:Getting Started with TAPA>` guide.
 
@@ -45,8 +46,9 @@ Save this code to a file named ``gen_device.py`` and run it using the
 
 .. note::
 
-   Please install RapidStream and a valid license before running the
-   ``rapidstream`` executable.
+   The ``rapidstream`` executable is not publicly distributed with TAPA.
+   These steps only apply in environments where RapidStream is already
+   available.
 
 Step 2: Configure the Floorplanning Process
 -------------------------------------------

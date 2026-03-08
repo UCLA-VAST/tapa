@@ -12,11 +12,14 @@ Installation
 
 .. code-block:: bash
 
-  # Install TAPA
-  sh -c "$(curl -fsSL tapa.rapidstream.sh)"
+  git clone https://github.com/rapidstream-org/rapidstream-tapa.git
+  cd rapidstream-tapa
 
-  # Optional: Install RapidStream
-  sh -c "$(curl -fsSL rapidstream.sh)"
+  # Update VARS.bzl first if your Xilinx tools are installed outside
+  # the default paths expected by the repository.
+  bazel build --config=release //:tapa-pkg-tar
+
+  RAPIDSTREAM_LOCAL_PACKAGE=./bazel-bin/tapa-pkg-tar.tar ./install.sh
 
 Compilation with TAPA
 ---------------------
@@ -64,6 +67,8 @@ Debugging TAPA Programs
 
 Optimization with RapidStream
 -----------------------------
+
+Only use this section if your environment already includes RapidStream.
 
 .. code-block:: bash
 

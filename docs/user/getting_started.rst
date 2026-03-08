@@ -5,7 +5,7 @@ Getting Started with TAPA
 
    This guide introduces the basic usage of RapidStream TAPA for creating
    FPGA dataflow accelerators. It assumes you have :ref:`installed TAPA
-   <user/installation:One-Step Installation>` and guides you through creating
+   <user/installation:Local Build Installation>` and guides you through creating
    a simple vector adder, compiling it for software simulation, synthesizing
    it into RTL, and running hardware simulation using the generated RTL.
 
