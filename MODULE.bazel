@@ -7,7 +7,7 @@ programming model and generates high-frequency FPGA accelerators.
 # All rights reserved. The contributor(s) of this file has/have agreed to the
 # RapidStream Contributor License Agreement.
 
-module(name = "rapidstream-tapa")
+module(name = "tapa")
 
 # Bazel dependencies
 bazel_dep(name = "aspect_rules_js", version = "2.4.0", dev_dependency = True)

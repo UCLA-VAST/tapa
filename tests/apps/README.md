@@ -6,25 +6,36 @@ RapidStream Contributor License Agreement.
 
 ## General
 
-This directory contains multiple small example TAPA designs.
+This directory contains multiple small example TAPA designs:
+
+| Example | Demonstrates |
+|---|---|
+| `vadd` | The core model: streams, `mmap`, and a four-task graph |
+| `async_mmap` | Decoupled memory access with `tapa::async_mmap` |
+| `bandwidth` | HBM bandwidth over many `async_mmap` channels |
+| `cannon` | Cannon's matrix multiply on a 2D array of stream-connected PEs |
+| `gemv` | Matrix-vector multiply |
+| `graph` | Graph traversal with a large per-task local buffer |
+| `ignore` | `[[tapa::target("ignore")]]` for custom-RTL replacement |
+| `jacobi` | Stencil computation with end-of-transmission (`close()`) |
+| `network` | Packet switching with `peek` and detached tasks |
+| `templated` | Templated leaf tasks |
 
 For large and complex designs, refer to the `tests/regression` directory.
 
-## Running TAPA application with rapidstream optimization
-
-In each app, an `run_rs.sh` file is provided to demonstrate the workflow to csynth TAPA
-applications to XO files, optimize the design with RapidStream, and cosimulate the
-design with TAPA.
-
-The example script of generating rapidstream configuration files can be found
-at `rapidstream-tapa/tests/rs_templetes/gen_config.py`.
-
-The example of script of TAPA and rapidstream commands can be found at `rapidstream-tapa/tests/rs_templetes/run_rs.sh`
-
-To run the examples, install both rapidstream and TAPA, and follow the instruction below.
+To run the examples, build TAPA from source and follow the instructions below.
 ```bash
-cd rapidstream-tapa/tests/apps/vadd
-source ./run_rs.sh
+cd tapa/tests/apps/vadd
+tapa g++ -- vadd.cpp vadd-host.cpp -o vadd
+./vadd
 ```
 
-The steps of installing TAPA and rapidstream can be found at `https://tapa.readthedocs.io/en/main/user/installation.html`
+Each example is also wired up as a Bazel target, so you can run one directly:
+
+```bash
+bazel test //tests/apps/vadd:vadd          # software simulation
+bazel test //tests/apps/vadd:vadd-xosim    # RTL cosimulation of the .xo
+```
+
+The steps for building TAPA are at
+<https://tapa.readthedocs.io/en/latest/developer/build.html>.

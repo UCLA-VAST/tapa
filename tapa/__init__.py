@@ -1,4 +1,4 @@
-"""Main package for RapidStream TAPA CLI."""
+"""Main package for TAPA CLI."""
 
 __copyright__ = """
 Copyright (c) 2024 RapidStream Design Automation, Inc. and contributors.

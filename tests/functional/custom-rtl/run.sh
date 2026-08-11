@@ -2,11 +2,10 @@
 # All rights reserved. The contributor(s) of this file has/have agreed to the
 # RapidStream Contributor License Agreement.
 
-# Tapa Rapidstream running script template
+# TAPA running script template
 
-# This script demonstrates how to csynth TAPA applications to XO files, optimize the
-# design with RapidStream, and cosimulate the design with TAPA.
-# To use this script, look into the run_rs.sh file in each app.
+# This script demonstrates how to csynth TAPA applications to XO files and
+# cosimulate the design with TAPA.
 
 APP=VecAdd
 CSYNTH_FILE=vadd.cpp

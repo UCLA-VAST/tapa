@@ -4,7 +4,7 @@ Visualizing TAPA Designs
 .. note::
 
    TAPA Visualizer is a web-based tool for visualizing and exploring
-   TAPA task structures. RapidStream no longer hosts public visualizer builds,
+   TAPA task structures. Run it locally from the repository:
    so run it locally from the repository:
 
    .. code-block:: bash

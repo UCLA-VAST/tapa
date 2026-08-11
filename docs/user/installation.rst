@@ -3,32 +3,30 @@ Installation
 
 .. note::
 
-   This guide walks you through building and installing RapidStream TAPA
-   locally from source.
+   TAPA is now maintained at `github.com/tuna/tapa
+   <https://github.com/tuna/tapa>`_. This repository is the archived
+   publication version; please install TAPA from the new repository.
 
-.. note::
+Install from the New Repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   RapidStream is currently unavailable. This section only covers local
-   installation of the open-source TAPA compiler.
-
-Local Build Installation
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-RapidStream no longer publishes hosted installation artifacts for a one-click
-TAPA install. Build the release package locally from this repository, then
-install it from the generated tarball.
+Install the latest release with the installation script:
 
 .. code-block:: bash
 
-  git clone https://github.com/rapidstream-org/rapidstream-tapa.git
-  cd rapidstream-tapa
+  curl -fsSL https://raw.githubusercontent.com/tuna/tapa/main/install.sh | sh -s -- -q
 
-  # Update VARS.bzl first if your Xilinx tools are installed outside
-  # the default paths expected by the repository.
-  bazel build --config=release //:tapa-pkg-tar
+With root privileges, this installs to ``/opt/tapa`` (symlinks in
+``/usr/local/bin``). Without root, it installs to ``~/.tapa`` and updates
+your shell ``PATH``. To install a specific version:
 
-  # Install from the locally built package.
-  RAPIDSTREAM_LOCAL_PACKAGE=./bazel-bin/tapa-pkg-tar.tar ./install.sh
+.. code-block:: bash
+
+  curl -fsSL https://raw.githubusercontent.com/tuna/tapa/main/install.sh \
+    | TAPA_VERSION=<version> sh -s -- -q
+
+See all releases at `github.com/tuna/tapa/releases
+<https://github.com/tuna/tapa/releases>`_.
 
 Verify the installation by running:
 
@@ -39,7 +37,7 @@ Verify the installation by running:
 System Prerequisites
 ~~~~~~~~~~~~~~~~~~~~
 
-RapidStream TAPA requires the following dependencies for a local build:
+Building TAPA from source requires the following dependencies:
 
 +-------------------+-----------------+----------------------------------------------+
 | Dependency        | Version         | Notes                                        |
@@ -57,7 +55,7 @@ RapidStream TAPA requires the following dependencies for a local build:
 | Xilinx Vitis      | 2022.1 or newer |                                              |
 +-------------------+-----------------+----------------------------------------------+
 
-RapidStream TAPA has been tested on the following operating systems. Use the
+TAPA has been tested on the following operating systems. Use the
 appropriate package manager to install the required dependencies if using a
 different OS.
 

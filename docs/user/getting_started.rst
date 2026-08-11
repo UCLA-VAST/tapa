@@ -3,26 +3,26 @@ Getting Started with TAPA
 
 .. note::
 
-   This guide introduces the basic usage of RapidStream TAPA for creating
+   This guide introduces the basic usage of TAPA for creating
    FPGA dataflow accelerators. It assumes you have :ref:`installed TAPA
    <user/installation:Local Build Installation>` and guides you through creating
    a simple vector adder, compiling it for software simulation, synthesizing
    it into RTL, and running hardware simulation using the generated RTL.
 
-We'll cover fundamental concepts and usage of RapidStream TAPA. If you're
+We'll cover fundamental concepts and usage of TAPA. If you're
 migrating from Vitis HLS, see the :ref:`Migrating from Vitis HLS
 <tutorial/migrate_from_vitis_hls:migrating from vitis hls>` tutorial.
 
 FPGA TAPA Task
 --------------
 
-Let's start with a simple vector addition example using RapidStream TAPA:
+Let's start with a simple vector addition example using TAPA:
 
 .. literalinclude:: ../../tests/apps/vadd/vadd.cpp
    :language: cpp
 
 Find the `complete source code
-<https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/vadd/vadd.cpp>`_
+<https://github.com/tuna/tapa/blob/main/tests/apps/vadd/vadd.cpp>`_
 in the ``vadd.cpp`` file in the ``tests/apps/vadd`` directory of the TAPA
 repository. Save it as ``vadd.cpp`` to follow along using command line tools.
 
@@ -190,7 +190,7 @@ to run the ``VecAdd`` kernel:
   }
 
 Find the
-`full host code <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/vadd/vadd-host.cpp>`_
+`full host code <https://github.com/tuna/tapa/blob/main/tests/apps/vadd/vadd-host.cpp>`_
 in the ``vadd-host.cpp`` file in the ``tests/apps/vadd`` directory of the
 TAPA repository.
 

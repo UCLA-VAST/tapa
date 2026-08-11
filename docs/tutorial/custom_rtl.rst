@@ -10,7 +10,7 @@ Example: Vector Add with Custom RTL Kernel
 
 In this example, we will use a custom-designed RTL kernel to replace a non-synthesizable kernel in the example design.
 
-The complete example can be found at `Custom RTL Test <https://github.com/rapidstream-org/rapidstream-tapa/tree/main/tests/functional/custom-rtl>`_.
+The complete example can be found at `Custom RTL Test <https://github.com/tuna/tapa/tree/main/tests/functional/custom-rtl>`_.
 
 Labeling the Non-synthesizable Kernel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

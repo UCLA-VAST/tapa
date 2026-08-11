@@ -231,23 +231,6 @@ To update the LLVM version:
 
       LLVM_SHA256 = "<new_sha256_checksum>"
 
-Docker Images
-~~~~~~~~~~~~~
-
-For the Docker testing and building environments:
-
-1. Update the base image versions in ``.github/docker/*``.
-
-2. Update the system dependencies trigger date to the current date, so that
-   the Docker image is rebuilt with the latest system dependencies:
-
-   .. code-block:: dockerfile
-
-      RUN apt-get update && \
-          # Update the following line to the latest date for retriggering the docker build
-          echo "Installing system dependencies as of 20250505" && \
-          apt-get upgrade -y
-
 Pre-commit Hooks
 ~~~~~~~~~~~~~~~~
 

@@ -1,5 +1,0 @@
---artifact-server-path ./artifacts.out
---rm
---secret-file /share/software/licenses/ci-secrets
--P self-hosted=-self-hosted
--e .actevent.json

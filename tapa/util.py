@@ -29,7 +29,7 @@ class Options:
     """Global configuration options."""
 
     # Only clang-format the first 1MB code to avoid performance bottleneck:
-    # https://github.com/rapidstream-org/rapidstream-tapa/issues/232
+    # https://github.com/tuna/tapa/issues/232
     clang_format_quota_in_bytes: int = 1_000_000
 
 

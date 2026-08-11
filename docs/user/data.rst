@@ -184,7 +184,7 @@ you to read a token without removing it. This is useful when computations
 depend on the content of input tokens, such as in switch networks.
 
 Example usage from the
-`TAPA network app <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/network/network.cpp>`_:
+`TAPA network app <https://github.com/tuna/tapa/blob/main/tests/apps/network/network.cpp>`_:
 
 .. code-block:: cpp
 
@@ -240,7 +240,7 @@ which can be resource-intensive, especially for small kernel modules.
 TAPA offers a more resource-efficient solution to this problem. It allows
 kernels to send a special "End of Transaction" (EoT) token to signify
 completion. This approach is demonstrated in the
-`jacobi stencil example <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/jacobi/jacobi.cpp>`_
+`jacobi stencil example <https://github.com/tuna/tapa/blob/main/tests/apps/jacobi/jacobi.cpp>`_
 provided with TAPA:
 
 The producer, ``Mmap2Stream``, sends an ``EoT`` token by
@@ -427,7 +427,7 @@ This feature is particularly useful for creating flexible, scalable designs.
 
    A singleton ``stream`` or ``mmap`` is insufficient for parameterized
    designs. For example, the
-   `network app <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/network/network.cpp>`_
+   `network app <https://github.com/tuna/tapa/blob/main/tests/apps/network/network.cpp>`_
    shipped with TAPA defines an 8×8 switch network. What if we want to use a
    16×16 network? Or 4×4? TAPA allows parameterization of network size
    through arrays of ``stream``/``mmap`` and batch invocation.
@@ -446,7 +446,7 @@ is the number of invocations:
    formal parameter.
 
 Example usage from the
-`TAPA network app <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/network/network.cpp>`_:
+`TAPA network app <https://github.com/tuna/tapa/blob/main/tests/apps/network/network.cpp>`_:
 
 .. code-block:: cpp
 

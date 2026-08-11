@@ -1,4 +1,4 @@
-"""Main documentation for RapidStream TAPA."""
+"""Main documentation for TAPA."""
 
 __copyright__ = """
 Copyright (c) 2024 RapidStream Design Automation, Inc. and contributors.

@@ -1,4 +1,4 @@
-PROJECT_NAME           = "RapidStream TAPA"
+PROJECT_NAME           = "TAPA"
 
 OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"
 

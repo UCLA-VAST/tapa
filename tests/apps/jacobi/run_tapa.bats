@@ -15,7 +15,7 @@ compile_host() {
 compile_xo() {
   cd "${BATS_TEST_DIRNAME}"
 
-  ${RAPIDSTREAM_TAPA_HOME}/usr/bin/tapa \
+  ${TAPA_HOME}/usr/bin/tapa \
     -w ${BATS_TMPDIR}/jacobi-workdir \
     compile \
     --jobs 2 \

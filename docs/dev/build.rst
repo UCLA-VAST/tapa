@@ -12,7 +12,7 @@ Building from Source
 
    If your OS isn't officially supported and you're not a developer,
    consider using a virtual machine or file a
-   `feature request on GitHub <https://github.com/rapidstream-org/rapidstream-tapa/issues>`_.
+   `feature request on GitHub <https://github.com/tuna/tapa/issues>`_.
 
 System Prerequisites
 --------------------
@@ -50,7 +50,7 @@ Install these tools using your OS package manager. For Ubuntu:
 
 .. note::
 
-   The `Dockerfile in the TAPA repository <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/.github/docker/build-env/Dockerfile.Dependencies>`_
+   The `Dockerfile in the TAPA repository <https://github.com/tuna/tapa/blob/main/.github/docker/build-env/Dockerfile.binary-dependencies>`_
    provides a complete build environment. Use it for containerized builds or
    run the Ubuntu commands to install required tools.
 
@@ -61,7 +61,7 @@ To get started with building TAPA from source, you'll need to clone the reposito
 
 .. code-block:: bash
 
-   git clone https://github.com/rapidstream-org/rapidstream-tapa.git
+   git clone https://github.com/tuna/tapa.git
 
 If you are contributing to TAPA, fork the repository and clone your fork
 instead. When you're ready to contribute, create a new branch for your
@@ -71,7 +71,7 @@ changes back to the main repository.
 Modify the Build Configuration
 ------------------------------
 
-When building on systems other than a RapidStream server or a UCLA server, you
+When building on systems other than a UCLA server, you
 will need to modify the ``VARS.bzl`` file in the repository's root directory
 to specify the correct Vivado installation paths and versions. The build script
 currently assumes default installation paths at
@@ -199,101 +199,3 @@ choice:
    tar -xvf bazel-bin/tapa-pkg-tar.tar -C /path/to/install
 
 Access the TAPA compiler binary at ``/path/to/install/usr/bin/tapa``.
-
-Containerized Build (Advanced)
-------------------------------
-
-For those who prefer a containerized build environment, TAPA offers a GitHub
-Actions workflow that can be run locally using ``act``. This approach ensures
-a consistent build environment across different systems.
-
-Prerequisites
-^^^^^^^^^^^^^
-
-1. Install ``act`` by following the instructions in the
-   `act repository <https://nektosact.com>`_.
-
-2. Ensure Docker is installed on your system, as ``act`` requires it to run
-   the workflow.
-
-.. note::
-
-   RapidStream organization developers using RapidStream servers can skip
-   the configuration steps below, as the necessary setup is already in place.
-
-Configuration
-^^^^^^^^^^^^^
-
-Before running ``act``, set up the following configuration files:
-
-1. Create a ``.secrets`` file in the repository root with the following content:
-
-   .. code-block:: text
-
-      UBUNTU_PRO_TOKEN=[YOUR_UBUNTU_PRO_TOKEN]
-      MAC_ADDRESS=de:ed:be:ef:ca:fe
-
-   Replace ``[YOUR_UBUNTU_PRO_TOKEN]`` with your Ubuntu Pro token (available
-   free for personal use) and ``de:ed:be:ef:ca:fe`` with your Vivado license
-   MAC address.
-
-2. Update the ``.actrc`` file in the repository root:
-
-   .. code-block:: text
-
-      --secret-file .secrets
-
-3. If your Vivado license and installation locations differ from the defaults
-   (``/share/software/licenses/xilinx-ci.lic`` and
-   ``/share/software/tools`` respectively), update
-   ``.github/actions/run-docker/action.yml`` accordingly.
-
-.. note::
-
-   Developers from the RapidStream organization can start from here.
-
-Running Containerized Tests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To test TAPA in the containerized environment:
-
-.. code-block:: bash
-
-   act -j test
-
-This method often provides more consistent results than local testing due to
-the isolated environment. It also benefits from a shared Bazel cache between
-runs, potentially speeding up the build process.
-
-.. note::
-
-   Build artifacts are not saved to the local ``bazel-bin`` directory in
-   containerized builds. For debugging, you may need to build TAPA in your
-   local environment. However, you can still add test cases and use ``act``
-   for testing your changes.
-
-Creating a Binary Distribution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To create a binary distribution of TAPA:
-
-.. code-block:: bash
-
-   act -j build
-
-The resulting binary distribution is saved in the ``artifacts.out`` directory
-in the repository root (e.g., ``artifacts.out/1/tapa/tapa.tar.gz`` for the
-first build).
-
-Installing the Binary Distribution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To install the binary distribution:
-
-1. Extract the tarball to your preferred directory, or
-2. Use the provided ``install.sh`` script to install TAPA to the default
-   location:
-
-   .. code-block:: bash
-
-      RAPIDSTREAM_LOCAL_PACKAGE=./artifacts.out/1/tapa/tapa.tar.gz ./install.sh

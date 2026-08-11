@@ -198,7 +198,7 @@ consumer, and three wrapper stages. Each stage can further instantiate its
 own child tasks ``InnerStage``, creating a hierarchical structure.
 
 The
-`network example <https://github.com/rapidstream-org/rapidstream-tapa/blob/main/tests/apps/network/network.cpp>`_
+`network example <https://github.com/tuna/tapa/blob/main/tests/apps/network/network.cpp>`_
 shipped with TAPA demonstrates both of these features:
 
 1. It uses detached tasks for 2×2 switch boxes, which are instantiated and

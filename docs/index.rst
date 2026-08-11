@@ -1,15 +1,13 @@
-RapidStream TAPA Documentation
-##############################
+TAPA Documentation
+##################
 
-Welcome to the `RapidStream TAPA`_ documentation. RapidStream TAPA is a
+Welcome to the `TAPA`_ documentation. TAPA is a
 powerful framework for designing high-frequency FPGA dataflow accelerators.
 It combines a robust C++ API for expressing task-parallel designs with
-advanced optimization techniques from `RapidStream`_ to deliver exceptional
+advanced physical-design optimization techniques to deliver exceptional
 design performance and productivity.
 
-.. _RapidStream TAPA: https://github.com/rapidstream-org/rapidstream-tapa
-
-.. _RapidStream: https://rapidstream-da.com
+.. _TAPA: https://github.com/tuna/tapa
 
 This documentation is divided into three main sections:
 :ref:`User Documentation` for those using TAPA to develop FPGA accelerators,
@@ -37,16 +35,6 @@ those contributing to or extending the TAPA framework itself.
   user/cheatsheet
 
 .. _Tutorials:
-
-.. toctree::
-  :caption: Optimization with RapidStream
-  :maxdepth: 2
-
-  rapidstream/getting_started
-  rapidstream/device
-  rapidstream/floorplan
-  rapidstream/pipeline
-  rapidstream/dse
 
 .. toctree::
   :caption: Tutorials

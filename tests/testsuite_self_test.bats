@@ -8,16 +8,16 @@
 # All rights reserved. The contributor(s) of this file has/have agreed to the
 # RapidStream Contributor License Agreement.
 
-@test "testsuite: RAPIDSTREAM_TAPA_HOME is set" {
-  [ -d "${RAPIDSTREAM_TAPA_HOME}" ]
+@test "testsuite: TAPA_HOME is set" {
+  [ -d "${TAPA_HOME}" ]
 }
 
-@test "testsuite: RAPIDSTREAM_TAPA_HOME/usr/include exists" {
-  [ -d "${RAPIDSTREAM_TAPA_HOME}/usr/include" ]
+@test "testsuite: TAPA_HOME/usr/include exists" {
+  [ -d "${TAPA_HOME}/usr/include" ]
 }
 
-@test "testsuite: RAPIDSTREAM_TAPA_HOME/usr/lib exists" {
-  [ -d "${RAPIDSTREAM_TAPA_HOME}/usr/lib" ]
+@test "testsuite: TAPA_HOME/usr/lib exists" {
+  [ -d "${TAPA_HOME}/usr/lib" ]
 }
 
 @test "testsuite: tapa is runnable" {

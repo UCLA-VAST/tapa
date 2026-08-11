@@ -95,7 +95,6 @@ repos:
     rev: v1.1.403
     hooks:
       - id: pyright
-        exclude: /gen_config\.py$ # ignore modules that imports rapidstream
         # reading deps from file is not supported to ensure caching correctness
         additional_dependencies:
           - click

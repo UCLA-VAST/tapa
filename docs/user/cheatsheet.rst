@@ -3,7 +3,7 @@ Quick Reference
 
 .. note::
 
-   This guide provides a quick reference for using RapidStream TAPA. If you
+   This guide provides a quick reference for using TAPA. If you
    are a beginner, start with the
    :ref:`Getting Started <user/getting_started:Getting Started with TAPA>` guide.
 
@@ -12,14 +12,7 @@ Installation
 
 .. code-block:: bash
 
-  git clone https://github.com/rapidstream-org/rapidstream-tapa.git
-  cd rapidstream-tapa
-
-  # Update VARS.bzl first if your Xilinx tools are installed outside
-  # the default paths expected by the repository.
-  bazel build --config=release //:tapa-pkg-tar
-
-  RAPIDSTREAM_LOCAL_PACKAGE=./bazel-bin/tapa-pkg-tar.tar ./install.sh
+  curl -fsSL https://raw.githubusercontent.com/tuna/tapa/main/install.sh | sh -s -- -q
 
 Compilation with TAPA
 ---------------------
@@ -64,19 +57,6 @@ Debugging TAPA Programs
 
   # View HLS reports
   ls work.out/report/
-
-Optimization with RapidStream
------------------------------
-
-Only use this section if your environment already includes RapidStream.
-
-.. code-block:: bash
-
-  rapidstream-tapaopt \
-    --work-dir ./build \
-    --tapa-xo-path kernel.xo \
-    --device-config u55c_device.json \
-    --floorplan-config floorplan_config.json
 
 TAPA Code Structure
 -------------------
@@ -129,57 +109,3 @@ Stream Operations
   // Write
   stream.write(data);
   stream << data;  // Equivalent
-
-RapidStream Configuration
--------------------------
-
-Generate Virtual Device
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-  from rapidstream import get_u55c_vitis_device_factory
-  factory = get_u55c_vitis_device_factory("xilinx_u55c_gen3x16_xdma_3_202210_1")
-  factory.generate_virtual_device("u55c_device.json")
-
-Generate Floorplan Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-  from rapidstream import FloorplanConfig
-  config = FloorplanConfig(
-    port_pre_assignments={".*": "SLOT_X0Y0:SLOT_X0Y0"},
-  )
-  config.save_to_file("floorplan_config.json")
-
-Custom Device
-~~~~~~~~~~~~~
-
-.. code-block:: python
-
-  df = DeviceFactory(row=3, col=2, part_num="xcu55c-fsvh2892-2L-e")
-
-  # Set pblocks
-  for x in range(2):
-      for y in range(3):
-          pblock = f"-add CLOCKREGION_X{x*4}Y{y*4}:CLOCKREGION_X{x*4+3}Y{y*4+3}"
-          df.set_slot_pblock(x, y, [pblock])
-
-  # Extract resources
-  df.extract_slot_resources()
-
-  # Set capacities
-  df.set_slot_capacity(x, y, north=11520)
-
-  # Generate
-  df.factory.generate_virtual_device("custom_device.json")
-
-.. note::
-
-   Parameters to be considered for custom device generation are:
-
-   - Grid size: Affects runtime, fragmentation, effectiveness.
-   - Slot usage limit: Controls design spread vs concentration.
-   - Pre-existing usage: Reserve with ``set_slot_area``/``reduce_slot_area``.
-   - Inter-slot routing: Adjust with ``set_slot_capacity``.
